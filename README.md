@@ -1,4 +1,4 @@
-# QA Findings & Defect Reporting Standards
+# QA Findings Writer
 
 A comprehensive guide and template repository for writing clear, actionable, and deterministic Quality Assurance (QA) findings and bug reports.
 
