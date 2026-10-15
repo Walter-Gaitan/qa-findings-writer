@@ -1,0 +1,11 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Logs & Evidence dumps
+*.log
+*.har
+*.mp4
+*.mov
+scratch/
+tmp/

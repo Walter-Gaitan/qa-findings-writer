@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QAFindingReport",
+  "description": "Standard schema for programmatic QA finding creation and test management tools",
+  "type": "object",
+  "required": [
+    "title",
+    "module",
+    "environment",
+    "severity",
+    "stepsToReproduce",
+    "expectedResult",
+    "actualResult"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Concise summary following [Module] Defect behavior format"
+    },
+    "module": {
+      "type": "string",
+      "description": "Subsystem or component name"
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["S1_BLOCKER", "S2_MAJOR", "S3_MINOR", "S4_TRIVIAL"]
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["P0_URGENT", "P1_HIGH", "P2_MEDIUM", "P3_LOW"]
+    },
+    "environment": {
+      "type": "object",
+      "required": ["envName", "buildVersion"],
+      "properties": {
+        "envName": { "type": "string", "example": "staging" },
+        "buildVersion": { "type": "string", "example": "v1.4.2" },
+        "os": { "type": "string" },
+        "browser": { "type": "string" },
+        "viewport": { "type": "string" }
+      }
+    },
+    "preconditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "stepsToReproduce": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "expectedResult": {
+      "type": "string"
+    },
+    "actualResult": {
+      "type": "string"
+    },
+    "reproducibilityRate": {
+      "type": "string",
+      "example": "100%"
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "screenshotUrls": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" }
+        },
+        "videoUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "logs": {
+          "type": "string"
+        },
+        "correlationId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
